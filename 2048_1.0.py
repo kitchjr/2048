@@ -70,10 +70,6 @@ def merge2(line):
     return merged_line           
 
 
-
-
-
-
 class TwentyFortyEight:
     """
     Class to run the game logic.
@@ -97,13 +93,9 @@ class TwentyFortyEight:
                              DOWN: grid_height,
                              LEFT: grid_width,
                              RIGHT: grid_width}
-        
-        
-        
         #  reset game w two random tiles on new board
         self.reset()
         
-
     def reset(self):
         """
         Reset the game so the grid is empty except for two
@@ -139,37 +131,12 @@ class TwentyFortyEight:
         # replace with your code
         return self._width
 
-    
-    def traverse_grid(self, start_cell, direction, num_steps):
-        """
-        Function that iterates through the cells in a grid
-        in a linear direction
-        **usage**
-        print "Traversing first row"
-        traverse_grid((0, 0), (0, 1), GRID_WIDTH)
-        print
-    
-        print "Traversing second column"
-        traverse_grid((0, 1), (1, 0), GRID_HEIGHT)
-
-        """
-    
-        indices = []
-        for step in range(num_steps):
-            row = start_cell[0] + step * direction[0]
-            col = start_cell[1] + step * direction[1]
-            indices.append((row,col))
-        #return indices
-    
     def move(self, direction):
         """
         Move all tiles in the given direction and add
         a new tile if any tiles moved.
         """
         same_tiles = True
-        
-        #print "self._initial_tiles", self._initial_tiles
-        #print "self._initial_tiles[direction] ", self._initial_tiles[direction]
         
         for init_tile in self._initial_tiles[direction]:
             # build line to feed to merge() from a line or col (direction dependent)
@@ -192,10 +159,8 @@ class TwentyFortyEight:
                              new_line[idx])
                 
         if not same_tiles:
-            
             self.new_tile()
                     
-    
     def new_tile(self):
         """
         Create a new tile in a randomly selected empty
@@ -216,7 +181,6 @@ class TwentyFortyEight:
         # set the new cell value
         self.set_tile(row, col, new_tile_val)
         
-
     def set_tile(self, row, col, value):
         """
         Set the tile at position row, col to have the given value.
@@ -242,6 +206,6 @@ class TwentyFortyEight:
                 if self.get_tile(row,col) == 0]
 
 
-
+# for running in http://www.codeskulptor.org w gui
 poc_2048_gui.run_gui(TwentyFortyEight(2, 2))
 
